@@ -10,7 +10,7 @@ class CommentBox extends Component {
   handleSubmit = evt => {
     evt.preventDefault();
 
-    this.setState({ comment: '' });
+    this.setState({ comment: evt.target.value });
   };
   render() {
     return (
