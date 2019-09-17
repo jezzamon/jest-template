@@ -20,7 +20,7 @@ const RequireAuthHOC = (ChildComponent) => {
     }
 
     render() {
-      return <ChildComponent />;
+      return <ChildComponent {...this.props} />;
     }
   }
 
