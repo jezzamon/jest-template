@@ -9,7 +9,6 @@ const Root = ({ children, initialState = {} }) => {
   const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-  // do we need initial state?
   const store = createStore(
     reducers,
     initialState,
