@@ -4,6 +4,7 @@ export default ({ dispatch, getState }) => next => action => {
   next(action);
 
   if (!tv4.validate(getState(), stateSchema)) {
-    console.warn('invalide state schema detected');
+    console.warn('invalid state schema detected');
+    console.log('validation failed', tv4.error.message);
   }
 };
