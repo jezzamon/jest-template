@@ -6,6 +6,13 @@ function tokenForUser(user) {
   const timestamp = new Date().getTime();
   return jwt.encode({ sub: user.id, iat: timestamp }, config.secret);
 }
+
+exports.signin = function(req, res, next) {
+  // at this point user already has their sign in Auth'd with passport middleware
+  // we just need to give them a token
+  res.send({ token: tokenForUser(req.user) });
+};
+
 exports.signup = function(req, res, next) {
   // see if a given user exist
   const email = req.body.email;
@@ -40,8 +47,3 @@ exports.signup = function(req, res, next) {
     res.json({ token: tokenForUser(user) });
   });
 };
-
-exports.signin = function(req, res, next) {
-  // at this point user already has their sign in Auth'd with passport middleware
-  // we just need to give them a token
-}
