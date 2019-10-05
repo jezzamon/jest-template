@@ -2,7 +2,7 @@ const express = require('express');
 const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
-
+const config = require('./config');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
@@ -22,11 +22,10 @@ const options = {
   socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
   family: 4, // Use IPv4, skip trying IPv6
 };
-const uri =
-  'mongodb+srv://jezzamondev:jezzamonmongo@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true&w=majority';
+const uri = `mongodb+srv://${config.userDb}:${config.pwdDb}@cluster0-hkx6v.mongodb.net/multivision?retryWrites=true&w=majority`;
 mongoose.connect(uri, options).then(
   () => {
-    console.log('ready');
+    console.log('db ready');
   },
   err => {
     console.log('err appears err', err);

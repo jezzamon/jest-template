@@ -32,7 +32,9 @@ userSchema.pre('save', function(next) {
 // using bcrypt to unhash, will compare password candidatePassword and stored pwd
 userSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-    if (err) cb(err);
+    if (err) {
+      cb(err);
+    }
 
     cb(null, isMatch);
   });
