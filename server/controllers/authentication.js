@@ -10,7 +10,7 @@ function tokenForUser(user) {
 exports.signin = function(req, res, next) {
   // at this point user already has their sign in Auth'd with passport middleware
   // we just need to give them a token
-  res.send({ token: tokenForUser(req.user) });
+  res.json({ token: tokenForUser(req.user) });
 };
 
 exports.signup = function(req, res, next) {
