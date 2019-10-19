@@ -6,6 +6,8 @@ class Header extends Component {
     return (
       <div>
         <Link to="/">Redux Auth</Link>
+        <Link to="/post">Post a comment</Link>
+        <Link to="/comments">List comment</Link>
         <Link to="/signup">Sign Up</Link>
         <Link to="/signin">Sign In</Link>
         <Link to="/signout">Sign Out</Link>

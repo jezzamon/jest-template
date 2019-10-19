@@ -1,3 +1,4 @@
+// essentially redux-thunk but more limited to one dispatch when promise resolves
 export default ({ dispatch }) => next => action => {
   // Check to see if the action
   // has a promise on its 'payload' property

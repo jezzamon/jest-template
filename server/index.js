@@ -6,6 +6,7 @@ const config = require('./config');
 const app = express();
 const router = require('./router');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const options = {
   useNewUrlParser: true,
@@ -32,7 +33,9 @@ mongoose.connect(uri, options).then(
   }
 );
 
+// APP SETUP
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({ type: '*/*' }));
 router(app);
 const port = process.env.PORT || 3030;

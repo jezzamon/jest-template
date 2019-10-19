@@ -1,9 +1,7 @@
 import React from 'react';
-import { Route, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
-import CommentBox from 'components/CommentBox';
-import CommentList from 'components/CommentList';
+
 import * as actions from 'actions';
 
 class App extends React.Component {
@@ -22,12 +20,6 @@ class App extends React.Component {
   renderHeader() {
     return (
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/post">Post a comment</Link>
-        </li>
         <li>{this.renderButton()}</li>
       </ul>
     );
@@ -38,8 +30,7 @@ class App extends React.Component {
       <div className="App">
         <Header />
         {this.renderHeader()}
-        <Route path="/post" component={CommentBox} />
-        <Route path="/" exact component={CommentList} />
+        {this.props.children}
       </div>
     );
   }
