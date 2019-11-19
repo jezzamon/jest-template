@@ -2,7 +2,7 @@ import {
   SAVE_COMMENT,
   FETCH_COMMENTS,
   CHANGE_AUTH,
-  // AUTH_USER,
+  AUTH_USER,
 } from 'actions/types';
 import axios from 'axios';
 export function saveComment(comment) {
@@ -28,6 +28,11 @@ export function changeAuth(isLoggedIn) {
   };
 }
 
-export const signup = ({ email, password }) => dispatch => {
-  axios.post('http://localhost:3030/signup', { email, password });
+export const signup = ({ email, password }) => async dispatch => {
+  const response = await axios.post('http://localhost:3030/signup', {
+    email,
+    password,
+  });
+
+  dispatch({ type: AUTH_USER, payload: response.data.token });
 };
